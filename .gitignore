@@ -8,10 +8,11 @@ node_modules
 # testing
 coverage
 
-# next.js
+# next.js/express
 .next/
 out/
 build
+dist
 
 # misc
 .DS_Store
@@ -24,6 +25,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
+.env
 .env.local
 .env.development.local
 .env.test.local

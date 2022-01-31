@@ -10,9 +10,14 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.2",
     "prettier": "^2.5.1",
     "turbo": "latest"
   },
@@ -20,5 +25,16 @@
     "npm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "npm@8.1.2"
+  "packageManager": "npm@8.1.2",
+  "lint-staged": {
+    "apps/**/*.{js,ts,md,scss,json}": [
+      "prettier --write"
+    ],
+    "apps/**/*.{js,ts}": [
+      "eslint --fix"
+    ],
+    "apps/**/*.{css,scss}": [
+      "stylelint --fix"
+    ]
+  }
 }
