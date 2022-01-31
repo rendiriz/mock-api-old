@@ -1,6 +1,4 @@
-# Turborepo starter with NPM
-
-This is an official starter turborepo.
+# Mock API Turborepo
 
 ## What's inside?
 
@@ -8,10 +6,12 @@ This turborepo uses [NPM](https://www.npmjs.com/) as a package manager. It inclu
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org) app
-- `web`: another [Next.js](https://nextjs.org) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `demo`: a [Next.js](https://nextjs.org) app
+- `express-ts`: a [Express.js](https://expressjs.com) app build with tsc
+- `express-esbuild`: a [Express.js](https://expressjs.com) app build with esbuild
+- `express-swc`: a [Express.js](https://expressjs.com) app build with swc
+- `ui`: a stub React component library
+- `config`: `eslint` configurations
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
@@ -23,17 +23,14 @@ This turborepo has some additional tools already setup for you:
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
-
-## Setup
-
-This repository is used in the `npx create-turbo@latest` command, and selected when choosing which package manager you wish to use with your monorepo (NPM).
+- [Husky](https://typicode.github.io/husky) for git hook
 
 ### Build
 
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd mock-api
 npm run build
 ```
 
@@ -42,36 +39,6 @@ npm run build
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd mock-api
 npm run dev
 ```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching (Beta)](https://turborepo.org/docs/features/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching (Beta) you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Pipelines](https://turborepo.org/docs/features/pipelines)
-- [Caching](https://turborepo.org/docs/features/caching)
-- [Remote Caching (Beta)](https://turborepo.org/docs/features/remote-caching)
-- [Scoped Tasks](https://turborepo.org/docs/features/scopes)
-- [Configuration Options](https://turborepo.org/docs/reference/configuration)
-- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
