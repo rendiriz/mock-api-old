@@ -1,15 +1,15 @@
 {
-  "name": "express-esbuild",
+  "name": "express-swc",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "esbuild": "esbuild ./src --platform=node --bundle --minify --outfile=dist/index.js",
+    "swc": "swc src -o dist/index.mjs",
     "clean": "rimraf dist/*",
     "dev:start": "npm-run-all build start",
     "dev": "env-cmd nodemon --watch src -e ts --exec npm run dev:start",
-    "start": "env-cmd node dist",
-    "build": "npm-run-all clean esbuild",
+    "start": "env-cmd node dist/index.mjs",
+    "build": "npm-run-all clean swc",
     "lint": "eslint ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,11 +22,12 @@
     "express": "^4.17.2"
   },
   "devDependencies": {
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.135",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.13",
     "config": "*",
-    "esbuild": "^0.14.14",
     "eslint": "^8.8.0",
     "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
