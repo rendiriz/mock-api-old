@@ -23,5 +23,7 @@ module.exports = {
       '@typescript-eslint/parser': ['.ts'],
     },
   },
-  rules: {},
+  rules: {
+    'import/no-unresolved': 'off',
+  },
 };

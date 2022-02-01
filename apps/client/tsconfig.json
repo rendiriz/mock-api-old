@@ -1,0 +1,13 @@
+{
+  "extends": "tsconfig/express.json",
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "dist",
+    "paths": {
+      "@controllers/*": ["controllers/*"],
+      "@routes/*": ["routes/*"]
+    }
+  },
+  "include": ["**/*.ts", ".eslintrc.js"],
+  "exclude": ["node_modules", "dist"]
+}
