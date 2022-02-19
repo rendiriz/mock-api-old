@@ -1,59 +1,16 @@
 import site from '@/config/site';
 import { NextSeo } from 'next-seo';
+import { SidebarDocLinks } from '@/config/menu';
+import { useMenuContext } from '@/contexts/menu';
 import NavbarDefault from '@/layouts/navbar/navbarDefault';
-import ActiveLink from '@/components/activeLink';
-import {
-  Box,
-  Flex,
-  List,
-  ListItem,
-  Link,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import SidebarDefault from '@/layouts/sidebar/sidebarDefault';
+import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
 import { MDXProvider } from '@mdx-js/react';
 import { mdx } from '@/components/mdx';
 
-const Links = [
-  {
-    label: 'Introduction',
-    href: '/docs',
-  },
-  {
-    label: 'Filtering',
-    href: '/docs/filtering',
-  },
-];
-
-const NavLink = ({ href, children }) => {
-  return (
-    <ActiveLink href={href} passHref activeClassName={'active'}>
-      <Link
-        d={'block'}
-        marginTop={1}
-        w={'full'}
-        userSelect={'none'}
-        borderRadius={'sm'}
-        p={2}
-        textAlign={'left'}
-        textDecoration={'none'}
-        _hover={{
-          bg: useColorModeValue('gray.100', 'gray.600'),
-        }}
-        sx={{
-          '&.active': {
-            bg: useColorModeValue('gray.200', 'gray.700'),
-            color: useColorModeValue('black', 'white'),
-            fontWeight: 'bold',
-          },
-        }}
-      >
-        {children}
-      </Link>
-    </ActiveLink>
-  );
-};
-
 function ContainerDocs({ meta, children }) {
+  const { isOpen } = useMenuContext();
+
   return (
     <>
       <NextSeo title={meta.title} titleTemplate={`%s | ${site.title}`} />
@@ -81,27 +38,9 @@ function ContainerDocs({ meta, children }) {
           flexShrink={0}
           w={{ base: 'full', md: 64 }}
           zIndex={20}
-          d={{ md: 'block' }}
+          d={{ base: isOpen ? 'block' : 'none', md: 'block' }}
         >
-          <Box
-            w={'full'}
-            h={'full'}
-            p={4}
-            pb={40}
-            overflowY={'auto'}
-            borderRight={'1px'}
-            borderColor={useColorModeValue('gray.200', 'gray.700')}
-          >
-            <Box d={{ base: 'hidden', md: 'block' }}>
-              <List>
-                {Links.map((link) => (
-                  <ListItem key={link.label}>
-                    <NavLink href={link.href}>{link.label}</NavLink>
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          </Box>
+          <SidebarDefault links={SidebarDocLinks} />
         </Box>
         <Box
           as={'article'}
