@@ -4,6 +4,7 @@ import http from 'http';
 
 import 'module-alias/register';
 import simple from '@routes/simple';
+import dynamic from '@routes/dynamic';
 
 const app = express();
 const node = process.env.NODE_ENV || 'development';
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(simple);
+app.use(dynamic);
 
 server.listen(port, () => {
   console.info(`Server ${node} started on http://localhost:${port}`);

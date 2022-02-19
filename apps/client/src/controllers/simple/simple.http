@@ -9,8 +9,13 @@ POST {{baseUrl}}{{endpoint}} HTTP/1.1
 Content-Type: application/json
 
 {
-  "data": "{\"email\": \"hey@mail.com\", \"password\": \"101010\", \"post\": [{\"email\": \"hey@mail.com\"}]}",
-  "from": "landing"
+  "code": "35af8a00-ed71-41",
+  "endpoint": "users",
+  "request_method": "GET",
+  "response_status_code": "200",
+  "response_header": "{\"Content-Type\": \"application/json\"}",
+  "response_body": "{\"email\": \"hey@mail.com\", \"password\": \"101010\", \"post\": [{\"email\": \"hey@mail.com\"}]}",
+  "from": "landing",
 }
 
 #### Create Response

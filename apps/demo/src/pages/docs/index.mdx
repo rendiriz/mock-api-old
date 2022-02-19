@@ -1,0 +1,17 @@
+import ContainerDocs from '@/layouts/container/containerDocs';
+
+export const meta = {
+  title: 'Mock API Documentation',
+};
+
+# Mock API Documentation
+
+- [Filtering](/docs/filtering)
+- [Field Selection](/docs/field-selection)
+- [Population](/docs/population)
+- [Sort](/docs/sort)
+- [Pagination](/docs/pagination)
+
+export default ({ children }) => (
+  <ContainerDocs meta={meta}>{children}</ContainerDocs>
+);

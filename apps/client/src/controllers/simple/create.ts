@@ -5,16 +5,29 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function getCreate(req: Request) {
-  const { data, from } = req.body;
+  const {
+    code,
+    endpoint,
+    request_method,
+    response_status_code,
+    response_header,
+    response_body,
+    from,
+  } = req.body;
 
   const qInsert = await prisma.simple.create({
     data: {
-      data: JSON.parse(data),
+      code,
+      endpoint,
+      request_method,
+      response_status_code,
+      response_header: JSON.parse(response_header),
+      response_body: JSON.parse(response_body),
       from,
     },
   });
 
-  return qInsert.data;
+  return qInsert.response_body;
 }
 
 const create = async (req: Request, res: Response) => {

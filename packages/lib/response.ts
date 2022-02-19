@@ -43,10 +43,10 @@ export const ErrorHandler = (message: any, res: Response) => {
 
 export const ErrorNotFound = (message: string, res: Response) => {
   return res
-    .status(200)
+    .status(404)
     .header('Content-Type', 'application/json; charset=utf-8')
     .send({
-      code: 400,
+      code: 404,
       error: 1,
       message: message,
       data: {},

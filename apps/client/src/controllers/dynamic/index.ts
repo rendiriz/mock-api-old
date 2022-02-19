@@ -1,19 +1,22 @@
 import { Request, Response } from 'express';
-import { OkSimple, ErrorHandler, ErrorNotFound } from 'lib';
+import { ErrorHandler, ErrorNotFound } from 'lib';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 async function getRead(req: Request) {
-  const { uniq } = req.params;
+  const { code, endpoint } = req.params;
 
   const qRead = await prisma.simple.findFirst({
     where: {
-      id: uniq,
+      code,
+      endpoint,
       isActive: true,
     },
     select: {
-      data: true,
+      response_status_code: true,
+      response_header: true,
+      response_body: true,
     },
   });
 
@@ -26,7 +29,10 @@ const read = async (req: Request, res: Response) => {
     const qRead = await getRead(req);
 
     if (qRead) {
-      return OkSimple(qRead?.data, res);
+      return res
+        .status(Number(qRead.response_status_code))
+        .header(qRead.response_header)
+        .send(qRead.response_body);
     }
 
     return ErrorNotFound('Data not found.', res);

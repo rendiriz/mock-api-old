@@ -25,5 +25,6 @@ module.exports = {
   },
   rules: {
     'import/no-unresolved': 'off',
+    '@typescript-eslint/naming-convention': 'off',
   },
 };

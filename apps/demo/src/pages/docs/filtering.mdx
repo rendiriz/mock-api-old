@@ -1,0 +1,105 @@
+import ContainerDocs from '@/layouts/container/containerDocs';
+import { Table, Thead, Tbody, Tfoot, Tr, Th, Td } from '@chakra-ui/react';
+
+export const meta = {
+  title: 'Filtering',
+};
+
+# Filtering
+
+Queries can accept a `filters` parameter with the following syntax:
+
+`GET /api/:pluralApiId?filters[field][operator]=value`
+
+The following operators are available:
+
+<Table variant="striped">
+  <Thead>
+    <Tr>
+      <Th>Operator</Th>
+      <Th>Description</Th>
+    </Tr>
+  </Thead>
+  <Tbody>
+    <Tr>
+      <Td>`$eq`</Td>
+      <Td>Equal</Td>
+    </Tr>
+    <Tr>
+      <Td>`$ne`</Td>
+      <Td>Not equal</Td>
+    </Tr>
+    <Tr>
+      <Td>`$lt`</Td>
+      <Td>Less than</Td>
+    </Tr>
+    <Tr>
+      <Td>`$lte`</Td>
+      <Td>Less than or equal to</Td>
+    </Tr>
+    <Tr>
+      <Td>`$gt`</Td>
+      <Td>Greater than</Td>
+    </Tr>
+    <Tr>
+      <Td>`$gte`</Td>
+      <Td>Greater than or equal to</Td>
+    </Tr>
+    <Tr>
+      <Td>`$in`</Td>
+      <Td>Included in an array</Td>
+    </Tr>
+    <Tr>
+      <Td>`$notIn`</Td>
+      <Td>Not included in an array</Td>
+    </Tr>
+    <Tr>
+      <Td>`$contains`</Td>
+      <Td>Contains (case-sensitive)</Td>
+    </Tr>
+    <Tr>
+      <Td>`$notContains`</Td>
+      <Td>Does not contain (case-sensitive)</Td>
+    </Tr>
+    <Tr>
+      <Td>`$containsi`</Td>
+      <Td>Contains</Td>
+    </Tr>
+    <Tr>
+      <Td>`$notContainsi`</Td>
+      <Td>Does not contain</Td>
+    </Tr>
+    <Tr>
+      <Td>`$null`</Td>
+      <Td>Is null</Td>
+    </Tr>
+    <Tr>
+      <Td>`$notNull`</Td>
+      <Td>Is not null</Td>
+    </Tr>
+    <Tr>
+      <Td>`$between`</Td>
+      <Td>Is between</Td>
+    </Tr>
+    <Tr>
+      <Td>`$startsWith`</Td>
+      <Td>Starts with</Td>
+    </Tr>
+    <Tr>
+      <Td>`$endsWith`</Td>
+      <Td>Ends with</Td>
+    </Tr>
+    <Tr>
+      <Td>`$or`</Td>
+      <Td>Joins the filters in an "or" expression</Td>
+    </Tr>
+    <Tr>
+      <Td>`$and`</Td>
+      <Td>Joins the filters in an "and" expression</Td>
+    </Tr>
+  </Tbody>
+</Table>
+
+export default ({ children }) => (
+  <ContainerDocs meta={meta}>{children}</ContainerDocs>
+);
